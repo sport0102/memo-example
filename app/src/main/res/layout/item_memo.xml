@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.aiden.memo.presentation.feature.main.MemoModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/item_memo_iv"
+            android:layout_width="@dimen/list_image_height"
+            android:layout_height="@dimen/list_image_height"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageSrc="@{item.thumbnailImage}" />
+
+        <TextView
+            android:id="@+id/item_memo_tv_title"
+            style="@style/Widget.Memo.TextView.title"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:text="@{item.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_memo_iv"
+            app:layout_constraintTop_toTopOf="@id/item_memo_iv" />
+
+        <TextView
+            android:id="@+id/item_memo_tv_description"
+            style="@style/Widget.Memo.TextView.description"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            android:text="@{item.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_memo_iv"
+            app:layout_constraintTop_toBottomOf="@+id/item_memo_tv_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
