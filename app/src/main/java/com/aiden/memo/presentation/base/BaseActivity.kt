@@ -13,7 +13,7 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel>(
     @LayoutRes private val layoutResId: Int
 ) : AppCompatActivity() {
 
-    private lateinit var binding: B
+    protected lateinit var binding: B
 
     abstract val viewModel: VM
 
@@ -25,10 +25,9 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel>(
             binding.setVariable(BR.vm, viewModel)
         }
         setContentView(binding.root)
-
     }
 
-    private fun binding(action: B.() -> Unit) {
+    protected fun binding(action: B.() -> Unit) {
         binding.run(action)
     }
 
