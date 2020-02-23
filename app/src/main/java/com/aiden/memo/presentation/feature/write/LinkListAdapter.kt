@@ -1,18 +1,20 @@
 package com.aiden.memo.presentation.feature.write
 
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.aiden.memo.databinding.ItemSeletedImageBinding
+import com.aiden.memo.databinding.ItemLinkBinding
+import java.util.regex.Pattern
 
-class SelectedImageListAdapter(val viewModel: WriteViewModel) :
+class LinkListAdapter(val viewModel: WriteViewModel) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val imageList = arrayListOf<String>()
+    private val linkList = arrayListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return SelectedImageViewHolder(
-            ItemSeletedImageBinding.inflate(
+        return LinkViewHolder(
+            ItemLinkBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -20,28 +22,28 @@ class SelectedImageListAdapter(val viewModel: WriteViewModel) :
         )
     }
 
-    override fun getItemCount(): Int = imageList.size
+    override fun getItemCount(): Int = linkList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as SelectedImageViewHolder).bind(imageList[position], position)
+        (holder as LinkViewHolder).bind(linkList[position], position)
     }
 
-    inner class SelectedImageViewHolder(private val binding: ItemSeletedImageBinding) :
+    inner class LinkViewHolder(private val binding: ItemLinkBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(image: String, position: Int) {
+        fun bind(link: String, position: Int) {
             binding.run {
-                this.image = image
-                itemSelectedImageBtnDelete.setOnClickListener {
-                    viewModel.deleteSelectedImage(position)
+                this.link = link
+                itemLinkBtnDelete.setOnClickListener {
+                    viewModel.deleteLink(position)
                 }
             }
         }
     }
 
     fun setList(list: List<String>?) {
-        imageList.clear()
+        linkList.clear()
         list?.let {
-            imageList.addAll(list)
+            linkList.addAll(list)
         }
         notifyDataSetChanged()
     }

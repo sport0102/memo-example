@@ -16,7 +16,7 @@
         android:layout_margin="@dimen/small_margin">
 
         <ImageView
-            android:id="@+id/item_seleted_image_iv"
+            android:id="@+id/item_image_iv"
             android:layout_width="@dimen/list_image_size"
             android:layout_height="@dimen/list_image_size"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,15 +24,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             bind:image="@{image}" />
-
-        <ImageView
-            android:id="@+id/item_selected_image_btn_delete"
-            android:layout_width="@dimen/item_action_image_size"
-            android:layout_height="@dimen/item_action_image_size"
-            android:src="@drawable/ic_delete"
-            android:tint="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/item_seleted_image_iv"
-            app:layout_constraintTop_toTopOf="@+id/item_seleted_image_iv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
