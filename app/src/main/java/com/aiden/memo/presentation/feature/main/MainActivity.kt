@@ -5,9 +5,9 @@ import android.os.Bundle
 import com.aiden.memo.R
 import com.aiden.memo.databinding.ActivityMainBinding
 import com.aiden.memo.presentation.base.BaseActivity
-import com.aiden.memo.presentation.enum.WriteType
 import com.aiden.memo.presentation.event.EventObserver
 import com.aiden.memo.presentation.feature.write.WriteActivity
+import com.aiden.memo.presentation.feature.write.WriteType
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -30,7 +30,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
             }
         }
         viewModel.memoList.observe(this, EventObserver {
-            (binding.mainRv.adapter as MemoListAdapter).setMemoList(it)
+            if (it.isNullOrEmpty()) {
+                viewModel.setHasMemo(false)
+            } else {
+                viewModel.setHasMemo(true)
+                (binding.mainRv.adapter as MemoListAdapter).setMemoList(it)
+            }
+            viewModel.setDataLoadingStatus(false)
         })
         viewModel.isDataLoadingError.observe(this, EventObserver {
             if (it.second) {
