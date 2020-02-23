@@ -21,4 +21,7 @@ interface MemoDao {
 
     @Update
     fun update(memo: MemoDBModel)
+
+    @Delete
+    fun delete(memo: MemoDBModel)
 }

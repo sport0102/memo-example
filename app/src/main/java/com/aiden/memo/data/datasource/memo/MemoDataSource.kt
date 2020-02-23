@@ -9,4 +9,5 @@ interface MemoDataSource {
     suspend fun insertMemo(memo: MemoDBModel)
     suspend fun insertMemo(memoList: List<MemoDBModel>)
     suspend fun updateMemo(memo: MemoDBModel)
+    suspend fun deleteMemo(memo: MemoDBModel)
 }

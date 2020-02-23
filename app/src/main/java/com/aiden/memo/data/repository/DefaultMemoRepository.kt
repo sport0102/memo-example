@@ -8,7 +8,6 @@ import com.aiden.memo.data.datasource.memo.MemoDataSource
 import com.aiden.memo.domain.entity.Memo
 import com.aiden.memo.domain.entity.ThumbnailType
 import com.aiden.memo.domain.repository.MemoRepository
-import java.util.*
 
 class DefaultMemoRepository(
     private val localDataSource: MemoDataSource
@@ -34,8 +33,12 @@ class DefaultMemoRepository(
     }
 
 
-    override fun getById(id: UUID): LiveData<Memo> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getById(id: String): LiveData<Memo> {
+        return Transformations.switchMap(localDataSource.getById(id)) {
+            it?.let {
+                MutableLiveData<Memo>(dbMemoToViewMemo(it))
+            }
+        }
     }
 
     override suspend fun insertMemo(memo: Memo) {
@@ -48,6 +51,10 @@ class DefaultMemoRepository(
 
     override suspend fun updateMemo(memo: Memo) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override suspend fun deleteMemo(memo: Memo) {
+        localDataSource.deleteMemo(entityMemoToDBMemo(memo))
     }
 
     private fun entityMemoToDBMemo(memo: Memo): MemoDBModel {

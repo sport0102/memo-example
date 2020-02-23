@@ -1,5 +1,6 @@
 package com.aiden.memo.domain.di
 
+import com.aiden.memo.domain.usecase.DeleteMemoUseCase
 import com.aiden.memo.domain.usecase.GetMemoUseCase
 import com.aiden.memo.domain.usecase.InsertMemoUseCase
 import com.aiden.memo.domain.usecase.UpdateMemoUseCase
@@ -16,5 +17,9 @@ fun getUseCaseModule() = module {
 
     single {
         UpdateMemoUseCase(get())
+    }
+
+    single {
+        DeleteMemoUseCase(get())
     }
 }
