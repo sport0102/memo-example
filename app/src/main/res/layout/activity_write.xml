@@ -66,19 +66,47 @@
                 android:textSize="@dimen/text_h2" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/write_btn_image_select"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/write_cl_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/btn_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal_margin"
-            android:background="@drawable/rounded_button"
-            android:text="@string/write_select_image"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_h2"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/write_til_body" />
+            app:layout_constraintTop_toBottomOf="@+id/write_til_body">
+
+            <Button
+                android:id="@+id/write_btn_image_select"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:background="@drawable/rounded_button"
+                android:text="@string/write_select_image"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_h2"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/write_btn_link_select"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/write_btn_link_select"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:layout_marginEnd="@dimen/normal_margin"
+                android:background="@drawable/rounded_button"
+                android:text="@string/write_add_link"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_h2"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/write_btn_image_select"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/write_rv_seleted_image"
@@ -89,15 +117,28 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/write_btn_image_select"
+            app:layout_constraintTop_toBottomOf="@+id/write_cl_btn"
             tools:itemCount="8"
             tools:listitem="@layout/item_seleted_image" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/write_rv_image_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/write_rv_seleted_image"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_link" />
 
         <Button
             android:id="@+id/write_btn_save"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/normal_margin"
             android:background="@drawable/rounded_button"
             android:text="@string/write_save"
             android:textColor="@color/white"
