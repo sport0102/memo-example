@@ -7,10 +7,11 @@
 
         <variable
             name="item"
-            type="com.aiden.memo.presentation.feature.main.MemoModel" />
+            type="com.aiden.memo.presentation.model.MemoModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_memo_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/normal_margin">
@@ -25,11 +26,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:image="@{item.thumbnailImage}" />
+            bind:image="@{item.thumbnail}" />
 
         <TextView
             android:id="@+id/item_memo_tv_title"
-            style="@style/Widget.Memo.TextView.title"
+            style="@style/Widget.Memo.TextView.Title"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin"
             android:text="@{item.title}"
@@ -39,7 +40,7 @@
 
         <TextView
             android:id="@+id/item_memo_tv_description"
-            style="@style/Widget.Memo.TextView.description"
+            style="@style/Widget.Memo.TextView.Description.Short"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginEnd="@dimen/normal_margin"
