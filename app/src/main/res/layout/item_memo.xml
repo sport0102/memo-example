@@ -13,13 +13,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/normal_margin"
-        android:orientation="vertical">
+        android:layout_marginBottom="@dimen/normal_margin">
 
         <ImageView
             android:id="@+id/item_memo_iv"
-            android:layout_width="@dimen/list_image_height"
-            android:layout_height="@dimen/list_image_height"
+            android:layout_width="@dimen/list_image_size"
+            android:layout_height="@dimen/list_image_size"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/normal_margin"
             android:layout_marginBottom="@dimen/normal_margin"

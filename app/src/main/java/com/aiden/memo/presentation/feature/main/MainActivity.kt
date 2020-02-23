@@ -18,6 +18,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     private fun setLayout() {
         binding {
             mainRv.adapter = MemoListAdapter()
+            mainFb.setOnClickListener {
+                val intent = Intent(this@MainActivity, WriteActivity::class.java)
+                intent.putExtra(intentKeyWriteType, WriteType.CREATE)
+                startActivity(intent)
+            }
         }
         viewModel.memoList.observe(this, EventObserver {
             (binding.mainRv.adapter as MemoListAdapter).setMemoList(it)

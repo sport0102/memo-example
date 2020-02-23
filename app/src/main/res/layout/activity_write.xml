@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.aiden.memo.presentation.feature.write.WriteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/normal_margin"
+        tools:context=".presentation.feature.write.WriteActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/write_til_title"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/write_title"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/write_et_body"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/write_et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="50"
+                android:singleLine="true"
+                android:text="@={vm.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_h2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/write_til_body"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:hint="@string/write_body"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/write_btn_save"
+            app:counterEnabled="true"
+            app:counterMaxLength="200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/write_til_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/write_et_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="200"
+                android:text="@={vm.body}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_h2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/write_btn_image_select"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:background="@drawable/rounded_button"
+            android:text="@string/write_select_image"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_h2"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/write_til_body" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/write_rv_seleted_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/write_btn_image_select"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_seleted_image" />
+
+
+        <Button
+            android:id="@+id/write_btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height"
+            android:background="@drawable/rounded_button"
+            android:text="@string/write_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_h2"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

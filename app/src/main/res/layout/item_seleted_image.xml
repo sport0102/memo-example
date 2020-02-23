@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.net.Uri" />
+
+        <variable
+            name="image"
+            type="Uri" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin">
+
+        <ImageView
+            android:id="@+id/item_memo_iv"
+            android:layout_width="@dimen/list_image_size"
+            android:layout_height="@dimen/list_image_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUri="@{image}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

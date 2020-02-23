@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Aiden Memo</string>
+
+    <string name="all_fail_get_permission">권한 사용 실패</string>
+
     <string name="main_no_memo">메모가 없습니다\n우측 하단의 메모 추가버튼으로\n메모를 추가하세요</string>
     <string name="main_add_memo">메모\n추가</string>
+
+    <string name="write_title">메모 제목</string>
+    <string name="write_body">메모 내용</string>
+    <string name="write_save">저장 하기</string>
+    <string name="write_select_image">이미지 선택(최대 8장)</string>
+    <string name="write_select_image_complete">선택 완료</string>
+    <string name="write_select_image_no_select">No Image</string>
+
 </resources>

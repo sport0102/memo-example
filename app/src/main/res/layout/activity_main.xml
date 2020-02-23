@@ -34,6 +34,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/main_no_memo"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_h1"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

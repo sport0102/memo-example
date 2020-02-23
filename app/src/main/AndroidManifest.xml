@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.aiden.memo.presentation.feature.write.WriteActivity" />
     </application>
 
 </manifest>
