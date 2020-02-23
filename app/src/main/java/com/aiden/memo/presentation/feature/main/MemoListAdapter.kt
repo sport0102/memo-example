@@ -32,7 +32,7 @@ class MemoListAdapter(val viewModel : MainViewModel): RecyclerView.Adapter<Recyc
             binding.run {
                 item = memoInfoModel
                 itemMemoCl.setOnClickListener {
-                    viewModel.setSeletedItem(memoInfoModel.id)
+                    viewModel.setSelectedItem(memoInfoModel.id)
                 }
             }
         }
