@@ -10,5 +10,5 @@ data class Memo(
     var thumbnail: String?,
     var thumbnailType: ThumbnailType?,
     var imageList: List<String>?,
-    var imageLink: List<String>?
+    var imageLinkList: List<String>?
 )

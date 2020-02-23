@@ -35,7 +35,7 @@ class DetailViewModel(
                         thumbnail = memo.thumbnail,
                         thumbnailType = memo.thumbnailType,
                         imageList = memo.imageList,
-                        imageLink = memo.imageLink
+                        imageLinkList = memo.imageLinkList
                     )
                 )
             )
@@ -51,7 +51,7 @@ class DetailViewModel(
             thumbnail = memoModel.thumbnail,
             thumbnailType = memoModel.thumbnailType,
             imageList = memoModel.imageList,
-            imageLink = memoModel.imageLink
+            imageLinkList = memoModel.imageLinkList
         )
         viewModelScope.launch(Dispatchers.IO) {
             try {

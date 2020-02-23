@@ -50,7 +50,7 @@ class DefaultMemoRepository(
     }
 
     override suspend fun updateMemo(memo: Memo) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        localDataSource.updateMemo(entityMemoToDBMemo(memo))
     }
 
     override suspend fun deleteMemo(memo: Memo) {
@@ -65,7 +65,7 @@ class DefaultMemoRepository(
             thumbnail = memo.thumbnail,
             thumbnailType = memo.thumbnailType?.name,
             imageList = memo.imageList,
-            imageLink = memo.imageLink
+            imageLinkList = memo.imageLinkList
         )
     }
 
@@ -77,7 +77,7 @@ class DefaultMemoRepository(
             thumbnail = memo.thumbnail,
             thumbnailType = getThumbnailType(memo.thumbnailType),
             imageList = memo.imageList,
-            imageLink = memo.imageLink
+            imageLinkList = memo.imageLinkList
         )
     }
 

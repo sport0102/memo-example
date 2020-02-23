@@ -12,5 +12,5 @@ data class MemoDBModel(
     var thumbnail: String?,
     var thumbnailType: String?,
     var imageList: List<String>?,
-    var imageLink: List<String>?
+    var imageLinkList: List<String>?
 )
