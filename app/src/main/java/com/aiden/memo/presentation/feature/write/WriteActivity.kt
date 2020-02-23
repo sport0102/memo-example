@@ -66,7 +66,10 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteViewModel>(R.layou
             }
 
         }
+    }
 
+    private fun setViewModel(writeType: WriteType) {
+        viewModel.setWriteType(writeType)
         viewModel.isDataLoadingError.observe(this, EventObserver {
             if (it.second) {
                 toastM("${it.first}")
@@ -88,9 +91,5 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteViewModel>(R.layou
                 }
             }
         })
-    }
-
-    private fun setViewModel(writeType: WriteType) {
-        viewModel.setWriteType(writeType)
     }
 }
