@@ -35,4 +35,13 @@
 
     <style name="MaterialTheme" parent="android:Theme.Material.Light.NoActionBar.Fullscreen" />
 
+    <style name="Widget.Memo.Button.AlertTextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/text_h2</item>
+        <item name="android:paddingStart">@dimen/alert_btn_padding</item>
+        <item name="android:paddingEnd">@dimen/alert_btn_padding</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>
