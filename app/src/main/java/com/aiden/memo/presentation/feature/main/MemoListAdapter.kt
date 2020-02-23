@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aiden.memo.databinding.ItemMemoBinding
+import com.aiden.memo.presentation.model.MemoModel
 
-class MemoListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MemoListAdapter(val viewModel : MainViewModel): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val memoInfoList = arrayListOf<MemoModel>()
 
@@ -30,6 +31,9 @@ class MemoListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(memoInfoModel: MemoModel) {
             binding.run {
                 item = memoInfoModel
+                itemMemoCl.setOnClickListener {
+                    viewModel.setSeletedItem(memoInfoModel.id)
+                }
             }
         }
     }

@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.aiden.memo.presentation.feature.write.WriteActivity" />
+        <activity android:name="com.aiden.memo.presentation.feature.detail.DetailActivity" />
     </application>
 
 </manifest>
