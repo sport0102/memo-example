@@ -1,14 +1,19 @@
 package com.aiden.memo.presentation.feature.main
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import com.aiden.memo.R
 import com.aiden.memo.databinding.ActivityMainBinding
 import com.aiden.memo.presentation.base.BaseActivity
+import com.aiden.memo.presentation.enum.WriteType
 import com.aiden.memo.presentation.event.EventObserver
+import com.aiden.memo.presentation.feature.write.WriteActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
-    override val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+    override val viewModel by viewModel<MainViewModel>()
+    private val intentKeyWriteType = "writeType"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
