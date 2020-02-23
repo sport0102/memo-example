@@ -1,17 +1,20 @@
 package com.aiden.memo.presentation.feature.detail
 
+import android.content.Intent
 import android.os.Bundle
 import com.aiden.memo.R
 import com.aiden.memo.databinding.ActivityDetailBinding
 import com.aiden.memo.presentation.base.BaseActivity
 import com.aiden.memo.presentation.event.EventObserver
-import com.aiden.memo.presentation.feature.write.SelectedImageListAdapter
+import com.aiden.memo.presentation.feature.write.WriteActivity
+import com.aiden.memo.presentation.feature.write.WriteType
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DetailActivity :
     BaseActivity<ActivityDetailBinding, DetailViewModel>(R.layout.activity_detail) {
     override val viewModel by viewModel<DetailViewModel>()
+    private val intentKeyWriteType = "writeType"
     private val intentKeyId = "id"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,12 +26,18 @@ class DetailActivity :
 
     private fun setLayout() {
         binding {
-            detailRvSeletedImage.adapter = SelectedImageListAdapter()
+            detailRv.adapter = ImageListAdapter()
 
             detailBtnDelete.setOnClickListener {
                 viewModel.deleteMemo()
             }
 
+            detailBtnUpdate.setOnClickListener {
+                val intent = Intent(this@DetailActivity, WriteActivity::class.java)
+                intent.putExtra(intentKeyWriteType, WriteType.UPDATE)
+                intent.putExtra(intentKeyId, viewModel.memo.value?.peekContent()?.id)
+                startActivity(intent)
+            }
         }
     }
 
@@ -41,7 +50,7 @@ class DetailActivity :
         })
         viewModel.memo.observe(this, EventObserver {
             binding.memo = it
-            (binding.detailRvSeletedImage.adapter as SelectedImageListAdapter).setList(it.imageList)
+            (binding.detailRv.adapter as ImageListAdapter).setList(it.imageList, it.imageLinkList)
         })
         viewModel.isDeleted.observe(this, EventObserver {
             val message =
