@@ -5,11 +5,9 @@
 
     <data>
 
-        <import type="android.net.Uri" />
-
         <variable
             name="image"
-            type="Uri" />
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageUri="@{image}" />
+            bind:image="@{image}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

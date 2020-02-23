@@ -6,24 +6,44 @@ import androidx.databinding.BindingAdapter
 import com.aiden.memo.R
 import com.bumptech.glide.Glide
 
-@BindingAdapter("bind:imageSrc")
-fun ImageView.bindImageSrc(imageSrc: String?) {
-    imageSrc?.let {
-        Glide.with(this.context)
-            .load(it)
-            .placeholder(R.drawable.image_place_holder)
-            .fitCenter()
-            .into(this)
-    }
+@BindingAdapter("bind:image")
+fun ImageView.bindImage(image: String?) {
+    image?.let { path ->
+        when {
+            path.startsWith("http") -> {
+                loadImage(this, path)
+            }
+            path.startsWith("file") -> {
+                loadImage(this, Uri.parse(path))
+            }
+            else -> {
+                loadImage(this)
+            }
+        }
+    } ?: loadImage(this)
+
 }
 
-@BindingAdapter("bind:imageUri")
-fun ImageView.bindImageUri(imageUri: Uri?) {
-    imageUri?.let {
-        Glide.with(this.context)
-            .load(it)
-            .placeholder(R.drawable.image_place_holder)
-            .centerCrop()
-            .into(this)
-    }
+private fun loadImage(view: ImageView, path: String) {
+    Glide.with(view.context)
+        .load(path)
+        .placeholder(R.drawable.image_place_holder)
+        .centerCrop()
+        .into(view)
+}
+
+private fun loadImage(view: ImageView) {
+    Glide.with(view.context)
+        .load(R.drawable.image_place_holder)
+        .placeholder(R.drawable.image_place_holder)
+        .centerCrop()
+        .into(view)
+}
+
+private fun loadImage(view: ImageView, path: Uri) {
+    Glide.with(view.context)
+        .load(path)
+        .placeholder(R.drawable.image_place_holder)
+        .centerCrop()
+        .into(view)
 }

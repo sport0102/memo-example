@@ -25,7 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageSrc="@{item.thumbnailImage}" />
+            bind:image="@{item.thumbnailImage}" />
 
         <TextView
             android:id="@+id/item_memo_tv_title"
@@ -43,7 +43,7 @@
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginEnd="@dimen/normal_margin"
-            android:text="@{item.description}"
+            android:text="@{item.body}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_memo_iv"
             app:layout_constraintTop_toBottomOf="@+id/item_memo_tv_title" />

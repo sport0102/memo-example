@@ -30,7 +30,7 @@ class SelectedImageListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
         RecyclerView.ViewHolder(binding.root) {
         fun bind(image: Uri) {
             binding.run {
-                this.image = image
+                this.image = image.toString()
             }
         }
     }
