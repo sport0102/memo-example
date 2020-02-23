@@ -27,6 +27,7 @@ fun ImageView.bindImage(image: String?) {
 private fun loadImage(view: ImageView, path: String) {
     Glide.with(view.context)
         .load(path)
+        .thumbnail(0.1f)
         .placeholder(R.drawable.image_place_holder)
         .centerCrop()
         .into(view)
@@ -35,6 +36,7 @@ private fun loadImage(view: ImageView, path: String) {
 private fun loadImage(view: ImageView) {
     Glide.with(view.context)
         .load(R.drawable.image_place_holder)
+        .thumbnail(0.1f)
         .placeholder(R.drawable.image_place_holder)
         .centerCrop()
         .into(view)
@@ -43,6 +45,7 @@ private fun loadImage(view: ImageView) {
 private fun loadImage(view: ImageView, path: Uri) {
     Glide.with(view.context)
         .load(path)
+        .thumbnail(0.1f)
         .placeholder(R.drawable.image_place_holder)
         .centerCrop()
         .into(view)
