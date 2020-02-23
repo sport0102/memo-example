@@ -59,5 +59,7 @@ dependencies {
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
     // gson
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+
 
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import com.aiden.memo.data.database.di.getRepositoryModule
 import com.aiden.memo.domain.di.getUseCaseModule
 import com.aiden.memo.presentation.di.getAppModule
+import com.facebook.stetho.Stetho
 
 class MemoApplication : Application() {
     override fun onCreate() {
@@ -14,5 +15,6 @@ class MemoApplication : Application() {
             getRepositoryModule(),
             getUseCaseModule()
         )
+        Stetho.initializeWithDefaults(this)
     }
 }
