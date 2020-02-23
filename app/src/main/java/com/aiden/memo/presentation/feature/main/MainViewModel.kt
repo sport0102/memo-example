@@ -21,13 +21,13 @@ class MainViewModel(getMemoUseCase: GetMemoUseCase) : BaseViewModel() {
                         thumbnail = memo.thumbnail,
                         thumbnailType = memo.thumbnailType,
                         imageList = memo.imageList,
-                        imageLink = memo.imageLink
+                        imageLinkList = memo.imageLinkList
                     )
                 )
             }
-            MutableLiveData<Event<List<MemoModel>>>(Event(list))
+            MutableLiveData<List<MemoModel>>(list)
         }
-    val memoList: LiveData<Event<List<MemoModel>>> get() = _memoList
+    val memoList: LiveData<List<MemoModel>> get() = _memoList
 
     private val _hasMemo = MutableLiveData<Event<Boolean>>()
     val hasMemo: LiveData<Event<Boolean>> get() = _hasMemo
@@ -37,6 +37,6 @@ class MainViewModel(getMemoUseCase: GetMemoUseCase) : BaseViewModel() {
 
     fun setHasMemo(hasMemo: Boolean) = run { _hasMemo.value = Event(hasMemo) }
 
-    fun setSeletedItem(id: String) = run { _selectedItem.value = Event(id) }
+    fun setSelectedItem(id: String) = run { _selectedItem.value = Event(id) }
 
 }

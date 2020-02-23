@@ -2,6 +2,7 @@ package com.aiden.memo.presentation.feature.main
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.aiden.memo.R
 import com.aiden.memo.databinding.ActivityMainBinding
 import com.aiden.memo.presentation.base.BaseActivity
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     }
 
     private fun setViewModel() {
-        viewModel.memoList.observe(this, EventObserver {
+        viewModel.memoList.observe(this, Observer {
             if (it.isNullOrEmpty()) {
                 viewModel.setHasMemo(false)
             } else {
