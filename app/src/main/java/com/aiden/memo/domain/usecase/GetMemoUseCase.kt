@@ -7,11 +7,11 @@ import java.util.*
 
 
 class GetMemoUseCase(private val repository: MemoRepository) {
-    fun invoke(): LiveData<List<Memo>> {
+    operator fun invoke(): LiveData<List<Memo>> {
         return repository.getAllMemo()
     }
 
-    fun invoke(id: UUID): LiveData<Memo> {
+    operator fun invoke(id: UUID): LiveData<Memo> {
         return repository.getById(id)
     }
 }

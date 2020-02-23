@@ -5,7 +5,7 @@ import com.aiden.memo.domain.repository.MemoRepository
 
 
 class UpdateMemoUseCase(private val repository: MemoRepository) {
-    suspend fun invoke(memo: Memo) {
+    suspend operator fun invoke(memo: Memo) {
         repository.updateMemo(memo)
     }
 }

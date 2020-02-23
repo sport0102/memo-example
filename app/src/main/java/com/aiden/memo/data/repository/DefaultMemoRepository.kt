@@ -2,8 +2,11 @@ package com.aiden.memo.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import com.aiden.memo.data.database.model.MemoDBModel
 import com.aiden.memo.data.datasource.memo.MemoDataSource
 import com.aiden.memo.domain.entity.Memo
+import com.aiden.memo.domain.entity.ThumbnailType
 import com.aiden.memo.domain.repository.MemoRepository
 import java.util.*
 
@@ -12,20 +15,22 @@ class DefaultMemoRepository(
 ) : MemoRepository {
 
     override fun getAllMemo(): LiveData<List<Memo>> {
-        val returnList = mutableListOf<Memo>()
-        localDataSource.getAllMemo().value?.forEach {
-            returnList.add(
-                Memo(
-                    id = it.id,
-                    title = it.title,
-                    body = it.body,
-                    thumbnail = it.thumbnail,
-                    imageList = it.imageList,
-                    imageLink = it.imageLink
-                )
-            )
+        return Transformations.switchMap(localDataSource.getAllMemo()) {
+            val list = mutableListOf<Memo>()
+            it.forEach { memo ->
+                list.add(dbMemoToViewMemo(memo))
+            }
+            MutableLiveData<List<Memo>>(list)
         }
-        return MutableLiveData<List<Memo>>(returnList)
+    }
+
+    private fun getThumbnailType(thumbnailType: String?): ThumbnailType? {
+        val type: ThumbnailType? = null
+        when (thumbnailType) {
+            ThumbnailType.URI.name -> ThumbnailType.URI
+            ThumbnailType.LINK.name -> ThumbnailType.LINK
+        }
+        return type
     }
 
 
@@ -34,7 +39,7 @@ class DefaultMemoRepository(
     }
 
     override suspend fun insertMemo(memo: Memo) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        localDataSource.insertMemo(entityMemoToDBMemo(memo))
     }
 
     override suspend fun insertMemo(memoList: List<Memo>) {
@@ -43,6 +48,30 @@ class DefaultMemoRepository(
 
     override suspend fun updateMemo(memo: Memo) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun entityMemoToDBMemo(memo: Memo): MemoDBModel {
+        return MemoDBModel(
+            id = memo.id,
+            title = memo.title,
+            body = memo.body,
+            thumbnail = memo.thumbnail,
+            thumbnailType = memo.thumbnailType?.name,
+            imageList = memo.imageList,
+            imageLink = memo.imageLink
+        )
+    }
+
+    private fun dbMemoToViewMemo(memo: MemoDBModel): Memo {
+        return Memo(
+            id = memo.id,
+            title = memo.title,
+            body = memo.body,
+            thumbnail = memo.thumbnail,
+            thumbnailType = getThumbnailType(memo.thumbnailType),
+            imageList = memo.imageList,
+            imageLink = memo.imageLink
+        )
     }
 
 }

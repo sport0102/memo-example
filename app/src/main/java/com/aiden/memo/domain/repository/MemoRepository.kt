@@ -1,6 +1,7 @@
 package com.aiden.memo.domain.repository
 
 import androidx.lifecycle.LiveData
+import com.aiden.memo.data.database.model.MemoDBModel
 import com.aiden.memo.domain.entity.Memo
 import java.util.*
 

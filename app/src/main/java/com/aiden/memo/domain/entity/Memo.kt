@@ -8,6 +8,7 @@ data class Memo(
     var title: String,
     var body: String,
     var thumbnail: String?,
-    var imageList: List<Uri>?,
-    var imageLink: String?
+    var thumbnailType: ThumbnailType?,
+    var imageList: List<String>?,
+    var imageLink: List<String>?
 )

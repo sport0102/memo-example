@@ -1,6 +1,5 @@
 package com.aiden.memo.data.database.model.converter
 
-import android.net.Uri
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -8,15 +7,16 @@ import com.google.gson.reflect.TypeToken
 
 class MemoTypeConverters {
     @TypeConverter
-    fun jsonToList(json: String?): List<Uri?>? {
-        return Gson().fromJson<List<Uri?>>(
+    fun jsonToStringList(json: String?): List<String?>? {
+        return Gson().fromJson<List<String?>>(
             json,
-            object : TypeToken<List<Uri?>?>() {}.type
+            object : TypeToken<List<String?>?>() {}.type
         )
     }
 
     @TypeConverter
-    fun listToJson(list: List<Uri?>?): String? {
+    fun stringListToJson(list: List<String>?): String? {
         return Gson().toJson(list)
     }
+
 }
