@@ -12,6 +12,16 @@
     <dimen name="text_h1">20sp</dimen>
     <dimen name="text_h2">16sp</dimen>
 
-    <dimen name="btn_height">60dp</dimen>
+    <dimen name="btn_height">64dp</dimen>
+
+    <dimen name="item_action_image_size">40dp</dimen>
+
+    <dimen name="alert_title_margin">24dp</dimen>
+    <dimen name="alert_title_height">66dp</dimen>
+    <dimen name="alert_height">118dp</dimen>
+    <dimen name="alert_width">280dp</dimen>
+    <dimen name="alert_btn_margin">8dp</dimen>
+    <dimen name="alert_btn_padding">8dp</dimen>
+    <dimen name="alert_btn_height">52dp</dimen>
 
 </resources>

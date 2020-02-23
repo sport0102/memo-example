@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/alert_width"
+    android:layout_height="@dimen/alert_height"
+    android:layout_gravity="center"
+    android:background="@drawable/alert_default">
+
+    <EditText
+        android:id="@+id/dialog_default_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/alert_title_height"
+        android:hint="@string/write_hint_link"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_h2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_default_et">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialog_default_no"
+            style="@style/Widget.Memo.Button.AlertTextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/alert_btn_height"
+            android:text="@string/all_cancel" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialog_default_yes"
+            style="@style/Widget.Memo.Button.AlertTextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/alert_btn_height"
+            android:text="@string/all_add" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
