@@ -1,6 +1,5 @@
 package com.aiden.memo.presentation.feature.write
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +7,7 @@ import com.aiden.memo.databinding.ItemSeletedImageBinding
 
 class SelectedImageListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val imageList = arrayListOf<Uri>()
+    private val imageList = arrayListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return SelectedImageViewHolder(
@@ -28,16 +27,18 @@ class SelectedImageListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 
     inner class SelectedImageViewHolder(private val binding: ItemSeletedImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(image: Uri) {
+        fun bind(image: String) {
             binding.run {
-                this.image = image.toString()
+                this.image = image
             }
         }
     }
 
-    fun setList(list: List<Uri>) {
+    fun setList(list: List<String>?) {
         imageList.clear()
-        imageList.addAll(list)
+        list?.let {
+            imageList.addAll(list)
+        }
         notifyDataSetChanged()
     }
 

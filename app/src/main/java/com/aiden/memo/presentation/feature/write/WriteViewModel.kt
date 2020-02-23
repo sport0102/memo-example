@@ -24,8 +24,8 @@ class WriteViewModel(
     val title = MutableLiveData<String>()
     val body = MutableLiveData<String>()
 
-    private val _imageUriList = MutableLiveData<Event<List<Uri>>>()
-    val imageUriList: LiveData<Event<List<Uri>>> get() = _imageUriList
+    private val _imageUriList = MutableLiveData<Event<List<String>>>()
+    val imageUriList: LiveData<Event<List<String>>> get() = _imageUriList
 
     private val _imageLinkList = MutableLiveData<Event<List<String>>>()
     val imageLinkList: LiveData<Event<List<String>>> get() = _imageLinkList
@@ -46,7 +46,9 @@ class WriteViewModel(
         _writeType.value = writeType
     }
 
-    fun setImageList(imageList: List<Uri>) = run { _imageUriList.value = Event(imageList) }
+    fun setImageList(imageList: List<Uri>) = run {
+        _imageUriList.value = Event(imageList.map { it.toString() })
+    }
 
     fun checkData(): Boolean {
         if (title.value.isNullOrEmpty()) {
