@@ -17,17 +17,20 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Widget.Memo.TextView.title" parent="Widget.Memo.TextView">
+    <style name="Widget.Memo.TextView.Title" parent="Widget.Memo.TextView">
         <item name="android:maxLines">1</item>
         <item name="android:textStyle">bold</item>
         <item name="android:ellipsize">end</item>
         <item name="android:textSize">@dimen/text_h1</item>
     </style>
 
-    <style name="Widget.Memo.TextView.description" parent="Widget.Memo.TextView">
+    <style name="Widget.Memo.TextView.Description" parent="Widget.Memo.TextView">
+        <item name="android:textSize">@dimen/text_h2</item>
+    </style>
+
+    <style name="Widget.Memo.TextView.Description.Short" parent="Widget.Memo.TextView.Description">
         <item name="android:maxLines">3</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textSize">@dimen/text_h2</item>
     </style>
 
     <style name="MaterialTheme" parent="android:Theme.Material.Light.NoActionBar.Fullscreen" />
